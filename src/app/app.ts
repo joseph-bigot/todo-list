@@ -11,6 +11,8 @@ export class App {
 
   filter: 'all' | 'todo' | 'done' = 'all';
 
+  darkMode: boolean = localStorage.getItem('darkMode') === 'true';
+
   get filteredTasks() {
     if (this.filter === 'todo') {
       return this.tasks.filter(task => !task.done);
@@ -44,6 +46,16 @@ export class App {
   deleteTask(id: number) {
     this.tasks = this.tasks.filter(task => task.id !== id);
     this.saveTasks();
+  }
+
+  toggleDarkMode() {
+    this.darkMode = !this.darkMode;
+    localStorage.setItem('darkMode', String(this.darkMode));
+    document.body.classList.toggle('dark', this.darkMode);
+  }
+
+  constructor() {
+    document.body.classList.toggle('dark', this.darkMode);
   }
 
   loadTasks() {

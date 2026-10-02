@@ -70,3 +70,36 @@ li span {
   text-decoration: line-through;
   color: gray;
 }
+
+.theme-toggle {
+  display: block;
+  margin: 0 auto 16px;
+}
+
+:host-context(body.dark) {
+  background: #1e1e1e;
+  color: #eee;
+}
+
+:host-context(body.dark) input[type="text"] {
+  background: #2a2a2a;
+  color: #eee;
+  border-color: #444;
+}
+
+:host-context(body.dark) button {
+  background: #3a3a3a;
+  color: #eee;
+}
+
+:host-context(body.dark) button:hover {
+  background: #4a4a4a;
+}
+
+:host-context(body.dark) .active {
+  background-color: #1976d2;
+}
+
+:host-context(body.dark) li {
+  border-bottom-color: #333;
+}

@@ -1,5 +1,9 @@
 <h1>Ma Todo List</h1>
 
+<button class="theme-toggle" (click)="toggleDarkMode()">
+  {{ darkMode ? '☀️ Mode clair' : '🌙 Mode sombre' }}
+</button>
+
 <input #newTask type="text" placeholder="Nouvelle tâche..." (keyup.enter)="addTask(newTask.value); newTask.value = ''" />
 <button (click)="addTask(newTask.value); newTask.value = ''">Ajouter</button>
 
