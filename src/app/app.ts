@@ -12,4 +12,14 @@ export class App {
     { id: 2, title: 'Créer ma todo list', done: false },
     { id: 3, title: 'La mettre sur GitHub', done: true }
   ];
+
+  addTask(title: string) {
+    if (title.trim() === '') return;
+
+    this.tasks.push({
+      id: Date.now(),
+      title: title.trim(),
+      done: false
+    });
+  }
 }
