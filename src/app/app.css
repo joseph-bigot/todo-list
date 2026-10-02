@@ -1,52 +1,99 @@
 :host {
+  --card: #c6c6c6;
+  --text: #404040;
+  --btn: #8b8b8b;
+  --btn-text: #ffffff;
+  --accent: #5d9b3a;
+  --line: #8b8b8b;
+  --light: #ffffff;
+  --shadow: #555555;
+
   display: block;
-  max-width: 500px;
-  margin: 40px auto;
+  max-width: 540px;
+  margin: 260px auto 48px;
   padding: 24px;
-  font-family: system-ui, sans-serif;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--card);
+  border: 4px solid;
+  border-color: var(--light) var(--shadow) var(--shadow) var(--light);
+  outline: 4px solid #000;
+}
+
+:host-context(body.dark) {
+  --card: #3b3b3b;
+  --text: #e0e0e0;
+  --btn: #555555;
+  --line: #666666;
+  --light: #6b6b6b;
+  --shadow: #1a1a1a;
 }
 
 h1 {
   text-align: center;
-  margin-top: 0;
+  margin: 0 0 20px;
+  font-size: 1.1rem;
+  font-weight: normal;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
 }
 
 input[type="text"] {
-  padding: 8px;
-  width: 65%;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  padding: 12px;
+  width: 62%;
+  font-family: inherit;
+  font-size: 0.7rem;
+  color: #fff;
+  background: #000;
+  border: 2px solid #a0a0a0;
+  border-radius: 0;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #fff;
 }
 
 button {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  background: #e0e0e0;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 0.65rem;
+  color: var(--btn-text);
+  text-shadow: 2px 2px 0 #3f3f3f;
+  background: var(--btn);
+  border: 3px solid;
+  border-color: #d0d0d0 #373737 #373737 #d0d0d0;
+  border-radius: 0;
+  outline: 2px solid #000;
   cursor: pointer;
 }
 
 button:hover {
-  background: #d0d0d0;
+  background: #7a86c9;
+}
+
+button:active {
+  border-color: #373737 #d0d0d0 #d0d0d0 #373737;
+}
+
+.theme-toggle {
+  display: block;
+  margin: 0 auto 24px;
 }
 
 .filters {
   display: flex;
-  gap: 8px;
-  margin: 16px 0;
+  gap: 10px;
+  margin: 22px 0;
 }
 
-.active {
-  font-weight: bold;
-  background-color: #1976d2;
-  color: white;
+button.active {
+  background: var(--accent);
 }
 
-.active:hover {
-  background-color: #1565c0;
+button.active:hover {
+  background: #6fb23f;
 }
 
 ul {
@@ -57,49 +104,31 @@ ul {
 li {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  gap: 12px;
+  padding: 12px 8px;
+  border-bottom: 2px solid var(--line);
 }
 
 li span {
   flex: 1;
 }
 
+li input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 20px;
+  height: 20px;
+}
+
+li button {
+  padding: 6px 8px;
+  font-size: 0.55rem;
+}
+
+li button:hover {
+  background: #c0392b;
+}
+
 .done {
   text-decoration: line-through;
-  color: gray;
-}
-
-.theme-toggle {
-  display: block;
-  margin: 0 auto 16px;
-}
-
-:host-context(body.dark) {
-  background: #1e1e1e;
-  color: #eee;
-}
-
-:host-context(body.dark) input[type="text"] {
-  background: #2a2a2a;
-  color: #eee;
-  border-color: #444;
-}
-
-:host-context(body.dark) button {
-  background: #3a3a3a;
-  color: #eee;
-}
-
-:host-context(body.dark) button:hover {
-  background: #4a4a4a;
-}
-
-:host-context(body.dark) .active {
-  background-color: #1976d2;
-}
-
-:host-context(body.dark) li {
-  border-bottom-color: #333;
+  color: #7a7a7a;
 }
