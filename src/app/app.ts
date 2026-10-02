@@ -22,4 +22,11 @@ export class App {
       done: false
     });
   }
+    toggleTask(task: { id: number; title: string; done: boolean }) {
+    task.done = !task.done;
+  }
+
+  deleteTask(id: number) {
+    this.tasks = this.tasks.filter(task => task.id !== id);
+  }
 }
