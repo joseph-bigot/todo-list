@@ -7,12 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './app.css'
 })
 export class App {
-  tasks = [
-    { id: 1, title: 'Apprendre Angular', done: false },
-    { id: 2, title: 'Créer ma todo list', done: false },
-    { id: 3, title: 'La mettre sur GitHub', done: true }
-  ];
-      filter: 'all' | 'todo' | 'done' = 'all';
+  tasks: { id: number; title: string; done: boolean }[] = this.loadTasks();
+
+  filter: 'all' | 'todo' | 'done' = 'all';
 
   get filteredTasks() {
     if (this.filter === 'todo') {
@@ -27,6 +24,7 @@ export class App {
   setFilter(filter: 'all' | 'todo' | 'done') {
     this.filter = filter;
   }
+
   addTask(title: string) {
     if (title.trim() === '') return;
 
@@ -35,12 +33,25 @@ export class App {
       title: title.trim(),
       done: false
     });
+    this.saveTasks();
   }
-    toggleTask(task: { id: number; title: string; done: boolean }) {
+
+  toggleTask(task: { id: number; title: string; done: boolean }) {
     task.done = !task.done;
+    this.saveTasks();
   }
 
   deleteTask(id: number) {
     this.tasks = this.tasks.filter(task => task.id !== id);
+    this.saveTasks();
+  }
+
+  loadTasks() {
+    const saved = localStorage.getItem('tasks');
+    return saved ? JSON.parse(saved) : [];
+  }
+
+  saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }

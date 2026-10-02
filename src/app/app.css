@@ -2,3 +2,12 @@
   text-decoration: line-through;
   color: gray;
 }
+.filters {
+  margin: 10px 0;
+}
+
+.active {
+  font-weight: bold;
+  background-color: #1976d2;
+  color: white;
+}
