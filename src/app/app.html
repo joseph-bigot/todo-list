@@ -3,8 +3,14 @@
 <input #newTask type="text" placeholder="Nouvelle tâche..." (keyup.enter)="addTask(newTask.value); newTask.value = ''" />
 <button (click)="addTask(newTask.value); newTask.value = ''">Ajouter</button>
 
+<div class="filters">
+  <button (click)="setFilter('all')" [class.active]="filter === 'all'">Toutes</button>
+  <button (click)="setFilter('todo')" [class.active]="filter === 'todo'">À faire</button>
+  <button (click)="setFilter('done')" [class.active]="filter === 'done'">Terminées</button>
+</div>
+
 <ul>
-  @for (task of tasks; track task.id) {
+  @for (task of filteredTasks; track task.id) {
     <li>
       <input type="checkbox" [checked]="task.done" (change)="toggleTask(task)" />
       <span [class.done]="task.done">{{ task.title }}</span>

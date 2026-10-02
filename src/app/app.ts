@@ -12,7 +12,21 @@ export class App {
     { id: 2, title: 'Créer ma todo list', done: false },
     { id: 3, title: 'La mettre sur GitHub', done: true }
   ];
+      filter: 'all' | 'todo' | 'done' = 'all';
 
+  get filteredTasks() {
+    if (this.filter === 'todo') {
+      return this.tasks.filter(task => !task.done);
+    }
+    if (this.filter === 'done') {
+      return this.tasks.filter(task => task.done);
+    }
+    return this.tasks;
+  }
+
+  setFilter(filter: 'all' | 'todo' | 'done') {
+    this.filter = filter;
+  }
   addTask(title: string) {
     if (title.trim() === '') return;
 
